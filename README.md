@@ -8,7 +8,7 @@ Download the folder "vault_altar_recipe_change" and put it within the saves/(wor
 
 To make sure that everything works correctly, open up the world or type `/reload` (with enabled cheats) if the world was already loaded, and then `/datapack list`. Skip through the list to search for `[file\vault_altar_recipe_change (world)]` that is most likely at the bottom of the list. If it is indeed listed, the datapack works correctly!
 
-Now, the next Vault Rock that you put on the Vault Altar will pull the required items from this pack rather than the default ones.
+Now, the next Vault Rock that you put on the Vault Altar will pull the required items from this pack rather than the default ones. So if you already have started a recipe, you will have to finish it first to get the new recipes.
 
 # Configuration
 The only file (besides the pack_meta) in this pack is the "loot-table" of the Vault Altar, `altar.json`, which is used to decide what items are needed to infuse a Vault Rock. You can open it with a notepad (or even better, notepad++) to change it. 
@@ -21,4 +21,20 @@ The Vault Altar gets the recipe out of four groups of items, "rolling" once on e
         "entries": [
 ```
 Within each group, several "entries" are listed, each representing one item. The "weight" is the likelyhood of an item to be pulled, with higher numbers representing a higher chance (in relative to all the other items). The "count" specifies how much of an item is needed, by rolling a random number between the "min" and "max" values.
+```
+          {
+            "type": "minecraft:item",
+            "weight": 10,
+            "name": "minecraft:cobblestone",
+            "functions": [
+              {
+                "function": "minecraft:set_count",
+                "count": {
+                  "min": 2000,
+                  "max": 5000
+                }
+              }
+            ]
+          },
+```
 You can change these values and even delete whole items as you see fit. For instance, reducing the counts by one magnitude (delete one 0 at every entry) makes the early game less grindy until you have the means to automate items. Just make sure that you do not mess up the brackets {} in the file, otherwise it will break.
